@@ -8,12 +8,10 @@ const app=express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors())
-app.get('/',(req,res)=>{
-    res.json('hello')
-})
+
 app.use('/user',require('./routes/userRouter'))
 app.use('/api',require('./routes/recommendationRouter'))
-//console.log(process.env)
+
 const URI=process.env.MONGO_DB_URL
 
 mongoose.connect(URI,{useNewUrlParser:true},(err)=>{
